@@ -1,4 +1,4 @@
-# g3_daily_briefing
+# G3 Daily Briefing
 
 > Provides users with a daily briefing of weather and other info
 
