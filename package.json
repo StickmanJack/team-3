@@ -1,0 +1,21 @@
+{
+  "name": "csc515-3",
+  "version": "1.0.0",
+  "description": "A quick personal glance at weather, a quote of the day...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CSC515 Team 3",
+  "contributors":{
+	"Matt <>",
+	"Pian <>",
+	"Radeeb <>",
+	"Roman Wisdom <Roman0243@live.missouristate.edu>",
+	"Seth <>"
+  }
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "vue": "^2.2.6"
+  }
+}
