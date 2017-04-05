@@ -7,11 +7,8 @@
                 <p>68 F</p>
          </div>
           <div class="col-sm-8 text-left">
-            <h1>Welcome</h1>
-            <p>{{weather}}</p>
-            <hr>
-            <h3>Test</h3>
-            <p>Lorem ipsum...</p>
+            <h2>{{weather}}</h2>
+            <h2>Goal of the Day</h2>
           </div>
           <div class="col-sm-2 sidenav">
             <div class="well">
@@ -31,9 +28,10 @@
 export default {
   data () {
     return {
-      quote: 'Quote of the day'
+      weather: 'Quote of the Day'
     }
   }
+
 }
 </script>
 <style>
