@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <h2>Welcome to our Weather Forecast App</h2>
     <router-view></router-view>
   </div>
 </template>

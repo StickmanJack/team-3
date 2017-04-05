@@ -1,53 +1,75 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
+      <div class="container-fluid text-center">
+        <div class="row content">
+          <div class="col-sm-2 sidenav">
+                <img src="../assets/demo-sunny.png" width="100" height="100">
+                <h3>Springfield, MO</h3>
+                <p>68 F</p>
+         </div>
+          <div class="col-sm-8 text-left">
+            <h1>Welcome</h1>
+            <p>{{weather}}</p>
+            <hr>
+            <h3>Test</h3>
+            <p>Lorem ipsum...</p>
+          </div>
+          <div class="col-sm-2 sidenav">
+            <div class="well">
+              <p>Forecast</p>
+            </div>
+            <div class="well">
+              <p>Detailed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 </template>
 
 <script>
 export default {
-  name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      quote: 'Quote of the day'
     }
   }
 }
 </script>
+<style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
 
-a {
-  color: #42b983;
-}
-</style>
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+
+    .container-fluid{
+        background-color: white;
+    }
+  </style>
