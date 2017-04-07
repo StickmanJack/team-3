@@ -1,6 +1,7 @@
 <template>
   <div> <!--required wrapping div-->
     <h1>Five Day Forecast</h1>
+    <div class="vertical-buffer-3"></div>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-6">

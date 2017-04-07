@@ -1,21 +1,37 @@
 <template>
   <div> <!--required wrapping div-->
+    <div class="vertical-buffer-5"></div>
     <h1>Good Afternoon Chad!</h1>
-    <div class="row">
-      <div class="col-sm-1 ">
-        <img src="../assets/demo-sunny.png" width="100" height="100">
-        <h3>{{localCity}}</h3>
-        <p>{{localTemp}} F</p>
-      </div>
+    <div class="vertical-buffer-5"></div>
+    <div class="row row-eq-height">
       <div class="col-sm-1"></div>
-      <div class="col-sm-8 text-center">
-        <div class="well"><h2>{{quote}}</h2></div>
+      <div class="col-sm-2 tall-col">
+        <div class="well">
+          <h2>Current Weather</h2>
+          <img src="../assets/demo-sunny.png" width="100" height="100">
+          <h3>{{localCity}}</h3>
+          <p>{{localTemp}} F</p>
+        </div>
       </div>
-      <div class="col-sm-2"></div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="well"><h2>{{gotd}}</h2></div>
+      <div class="col-sm-8 tall-col">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="well">
+              <h2 class="section-title">Quote of the Day:</h2>
+              <p class="section-content">{{quote}}</p>
+              <p id="q-author">- {{qauthor}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="well">
+              <h2 class="section-title">Goal of the Day:</h2>
+              <p class="section-content">{{gotd}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-1"></div>
       </div>
     </div>
   </div><!--end req wrapping div-->
@@ -27,7 +43,8 @@
 export default {
   data () {
     return {
-      quote: '\'Simplicity is prerequisite to reliability\' - Dijkstra',
+      quote: '\'Simplicity is prerequisite to reliability\'',
+      qauthor: 'Dijkstra',
       localCity: 'Springfield',
       localTemp: '75',
       gotd: 'Finish static views!'
@@ -37,6 +54,24 @@ export default {
 }
 </script>
 <style>
+
+
+    #q-author {
+      text-align: right;
+      margin-right: 10em;
+      font-size: 1.5em;
+    }
+
+    .section-content {
+      font-size: 2em;
+    }
+
+    .section-title {
+      margin-top: 0em;
+      margin-left: 4em;
+      text-align: left;
+    }
+
     .row-eq-height {
       flex-direction:row;
       display: -webkit-box;
@@ -47,6 +82,7 @@ export default {
 
     /* Give some headroom to containers. Should be moved to global css*/
     .vertical-buffer-3 {margin-top: 3em;}
+    .vertical-buffer-5 {margin-top: 5em;}
 
     /* extend col content to max height, works with row-eq-height */
     .tall-col {
