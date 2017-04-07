@@ -7,15 +7,15 @@
                 <p>68 F</p>
          </div>
           <div class="col-sm-8 text-left">
-            <h2>{{weather}}</h2>
+            <h2>{{quote}}</h2>
             <h2>Goal of the Day</h2>
           </div>
           <div class="col-sm-2 sidenav">
             <div class="well">
-              <p>Forecast</p>
+              <router-link to="Details">Todays Weather Details</router-link>
             </div>
             <div class="well">
-              <p>Detailed</p>
+              <router-link to="Forecast">5-Day Forecast</router-link>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
 export default {
   data () {
     return {
-      weather: 'Quote of the Day'
+      quote: '\'Simplicity is prerequisity to reliability\' - Dijkstra'
     }
   }
 
