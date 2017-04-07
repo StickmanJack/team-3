@@ -2,18 +2,20 @@
   <div><!--required wrapping div-->
     <h1>Today's Detailed Forecast</h1>
     <div class="row row-eq-height">
+      <div class="col-sm-1"></div>
       <div class="col-sm-6 tall-col">
         <div class="well">
           <p>Weather map</p>
           <img src="../assets/demo-weathermap.png">
         </div>
       </div>
-      <div class="col-sm-6 tall-col">
+      <div class="col-sm-4 tall-col">
           <div class="well">
             <p>Local Details</p>
             <p>{{localTemp}} F</p>
           </div>
       </div>
+      <div class="col-sm-1"></div>
     </div>
   </div><!--end req wrapping div-->
 </template>
