@@ -132,6 +132,14 @@ export default {
     }
 
     .container-fluid{
-        background-color: white;
+        background-color: white; 
+
+    }
+
+    #under-header {
+      background-image: url('../assets/demo-background.png');
+      background-position: center center;
+      background-size: 100%;
+      background-repeat: no-repeat;
     }
   </style>

@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">G3</a>
+          <img class="navbar-brand" src = "./assets/demo-logo.png"></img>
         </div>
 
         <!-- collapsing navbar taken from bootstrap example 1-->
@@ -23,7 +23,7 @@
       </div>
     </nav>
     <div class="vertical-buffer-3"></div>
-    <div class="container-fluid">
+    <div id= "under-header" class="container-fluid" >
       <router-view></router-view>
     </div>
   </div>
