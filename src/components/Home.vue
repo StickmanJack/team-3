@@ -2,20 +2,23 @@
       <div class="container-fluid text-center">
         <div class="row content">
           <div class="col-sm-2 sidenav">
+            <div>
                 <img src="../assets/demo-sunny.png" width="100" height="100">
-                <h3>Springfield, MO</h3>
-                <p>68 F</p>
+                <h3>{{localCity}}</h3>
+                <p>{{localTemp}} F</p>
+            </div>
          </div>
           <div class="col-sm-8 text-left">
-            <h2>{{quote}}</h2>
-            <h2>Goal of the Day</h2>
+            <h2 class="otd-head">Quote of the Day:</h2>
+            <p>{{quote}}</p>
+            <h2>{{gotd}}</h2>
           </div>
           <div class="col-sm-2 sidenav">
-            <div class="well">
-              <router-link to="Details">Todays Weather Details</router-link>
+            <div>
+              <router-link to="Details">Weather Details</router-link>
             </div>
-            <div class="well">
-              <router-link to="Forecast">5-Day Forecast</router-link>
+            <div>
+              <router-link to="Forecast">5-Day</router-link>
             </div>
           </div>
         </div>
@@ -28,13 +31,21 @@
 export default {
   data () {
     return {
-      quote: '\'Simplicity is prerequisity to reliability\' - Dijkstra'
+      quote: '\'Simplicity is prerequisite to reliability\' - Dijkstra',
+      localCity: 'Springfield',
+      localTemp: '75',
+      gotd: 'Complete static views for SPA'
     }
   }
 
 }
 </script>
 <style>
+    /*'of the day' headings*/
+    .otd-head{
+      Font-Size: 18pt;
+    }
+
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
       margin-bottom: 0;
