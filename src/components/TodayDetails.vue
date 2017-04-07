@@ -5,16 +5,27 @@
       <div class="col-sm-1"></div>
       <div class="col-sm-6 tall-col">
         <div class="well">
-          <p>Weather map</p>
+          <h3>Weather map</h3>
           <img src="../assets/demo-weathermap.png">
         </div>
       </div>
       <div class="col-sm-4 tall-col">
           <div class="well">
-            <p>Local Details</p>
+            <h3>Local Conditions</h3>
+            <h4>Weather:</h4>
+            <p>{{description}}</p>
+            <h4>Temperature:</h4>
             <p>{{localTemp}} F</p>
+            <h4>High</h4>
+            <p>{{highTemp}} F</p>
+            <h4>Low</h4>
+            <p>{{lowTemp}} F</p>
+            <h4>Humidity:</h4>
+            <p>{{humidity}}%</p>
+            <h4>Wind:</h4>
+            <p>{{speed}} mph {{direction}}</p>
           </div>
-      </div>
+        </div>
       <div class="col-sm-1"></div>
     </div>
   </div><!--end req wrapping div-->
@@ -24,7 +35,13 @@
 export default {
   data () {
     return {
-      localTemp: '75'
+      description: 'Light Rain',
+      localTemp: '75',
+      highTemp: '77',
+      lowTemp: '68',
+      humidity: '86',
+      speed: '5.1',
+      direction: 'NE'
     }
   }
 }
@@ -86,5 +103,13 @@ export default {
 
     .container-fluid{
         background-color: white;
+    }
+
+    h3 {
+      font-weight: Bold;
+    }
+
+    h4 {
+      font-weight: Bold;
     }
   </style>
