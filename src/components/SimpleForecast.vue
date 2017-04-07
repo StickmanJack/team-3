@@ -3,8 +3,8 @@
         <div class="row content">
           <div class="col-sm-2 sidenav">
                 <img src="../assets/demo-sunny.png" width="100" height="100">
-                <h3>Springfield, MO</h3>
-                <p>68 F</p>
+                <h3>{{localCity}}</h3>
+                <p>{{localTemp}} F</p>
          </div>
           <div class="col-sm-8 text-left">
             <h2>{{quote}}</h2>
@@ -28,7 +28,7 @@
 export default {
   data () {
     return {
-      quote: 'forecast'
+
     }
   }
 

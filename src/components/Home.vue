@@ -1,6 +1,5 @@
 <template>
-      <div class="container-fluid text-center">
-        <div class="row content">
+        <div>
           <div class="col-sm-2 sidenav">
             <div>
                 <img src="../assets/demo-sunny.png" width="100" height="100">
@@ -22,7 +21,6 @@
             </div>
           </div>
         </div>
-      </div>
 
 
 </template>
@@ -33,8 +31,7 @@ export default {
     return {
       quote: '\'Simplicity is prerequisite to reliability\' - Dijkstra',
       localCity: 'Springfield',
-      localTemp: '75',
-      gotd: 'Complete static views for SPA'
+      localTemp: '75'
     }
   }
 
