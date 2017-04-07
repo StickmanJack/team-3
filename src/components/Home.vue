@@ -1,26 +1,20 @@
 <template>
-        <div>
-          <div class="col-sm-2 sidenav">
-            <div>
-                <img src="../assets/demo-sunny.png" width="100" height="100">
-                <h3>{{localCity}}</h3>
-                <p>{{localTemp}} F</p>
-            </div>
-         </div>
-          <div class="col-sm-8 text-left">
-            <h2 class="otd-head">Quote of the Day:</h2>
-            <p>{{quote}}</p>
-            <h2>{{gotd}}</h2>
-          </div>
-          <div class="col-sm-2 sidenav">
-            <div>
-              <router-link to="Details">Weather Details</router-link>
-            </div>
-            <div>
-              <router-link to="Forecast">5-Day</router-link>
-            </div>
-          </div>
-        </div>
+  <div> <!--required wrapping div-->
+    <div class="col-sm-1">
+      <img src="../assets/demo-sunny.png" width="100" height="100">
+      <h3>{{localCity}}</h3>
+      <p>{{localTemp}} F</p>
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8 text-left">
+      <h2>{{quote}}</h2>
+      <h2>Goal of the Day</h2>
+    </div>
+    <div class="col-sm-1">
+    </div>
+
+  </div><!--end req wrapping div-->
 
 
 </template>

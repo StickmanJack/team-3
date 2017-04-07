@@ -20,12 +20,10 @@
             <li><router-link to="Forecast">5-Day</router-link></li>
           </ul>
         </div><!-- /.navbar-collapse -->
-        <div class="row-content">
-        <h2>Welcome to our Weather Forecast App</h2>
-        <router-view></router-view>
-        </div>
       </div>
     </nav>
+    <h2>Welcome to our Weather Forecast App</h2>
+    <router-view></router-view>
   </div>
 </template>
 

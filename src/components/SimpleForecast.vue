@@ -1,27 +1,16 @@
 <template>
-      <div class="container-fluid text-center">
-        <div class="row content">
-          <div class="col-sm-2 sidenav">
-                <img src="../assets/demo-sunny.png" width="100" height="100">
-                <h3>{{localCity}}</h3>
-                <p>{{localTemp}} F</p>
-         </div>
-          <div class="col-sm-8 text-left">
-            <h2>{{quote}}</h2>
-            <h2>Goal of the Day</h2>
-          </div>
-          <div class="col-sm-2 sidenav">
-            <div class="well">
-              <router-link to="/">Home</router-link>
-            </div>
-            <div class="well">
-              <router-link to="Details">Todays Weather Details</router-link>
-            </div>
-          </div>
-        </div>
+  <div> <!--required wrapping div-->
+    <div class="col-sm-6">
+      <div class="well">
+        <p>Weather map</p>
       </div>
-
-
+    </div>
+    <div class="col-sm-6">
+        <div class="well">
+          <p>Local Details</p>
+        </div>
+    </div>
+  </div><!--end req wrapping div-->
 </template>
 
 <script>
