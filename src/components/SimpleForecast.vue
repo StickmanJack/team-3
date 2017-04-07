@@ -1,14 +1,36 @@
 <template>
   <div> <!--required wrapping div-->
-    <div class="col-sm-6">
-      <div class="well">
-        <p>Weather map</p>
+    <div class="vertical-buffer-3"></div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-6">
+        <div class="well">
+          <p>Day 1 (Current Day)</p>
+        </div>
       </div>
     </div>
-    <div class="col-sm-6">
-        <div class="well">
-          <p>Local Details</p>
-        </div>
+    <div class="vertical-buffer-3"></div>
+    <div class="row">
+      <div class="col-sm-3 push-right">
+          <div class="well">
+            <p>Day 2</p>
+          </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="well">
+            <p>Day 3</p>
+          </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="well">
+            <p>Day 4</p>
+          </div>
+      </div>
+      <div class="col-sm-3 push-left">
+          <div class="well">
+            <p>Day 5</p>
+          </div>
+      </div>
     </div>
   </div><!--end req wrapping div-->
 </template>
@@ -24,6 +46,10 @@ export default {
 }
 </script>
 <style>
+
+    /* Give some headroom to containers. Should be moved to global css*/
+    .vertical-buffer-3 {margin-top: 3em;}
+
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
       margin-bottom: 0;

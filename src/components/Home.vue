@@ -1,19 +1,19 @@
 <template>
   <div> <!--required wrapping div-->
-    <div class="col-sm-1">
-      <img src="../assets/demo-sunny.png" width="100" height="100">
-      <h3>{{localCity}}</h3>
-      <p>{{localTemp}} F</p>
+    <div class="row">
+      <div class="col-sm-1 ">
+        <img src="../assets/demo-sunny.png" width="100" height="100">
+        <h3>{{localCity}}</h3>
+        <p>{{localTemp}} F</p>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8 text-left">
+        <h2>{{quote}}</h2>
+        <h2>Goal of the Day</h2>
+      </div>
+      <div class="col-sm-1">
+      </div>
     </div>
-    <div class="col-sm-2">
-    </div>
-    <div class="col-sm-8 text-left">
-      <h2>{{quote}}</h2>
-      <h2>Goal of the Day</h2>
-    </div>
-    <div class="col-sm-1">
-    </div>
-
   </div><!--end req wrapping div-->
 
 

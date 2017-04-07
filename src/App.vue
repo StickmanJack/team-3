@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container-fluid text-center">
+  <div id="app" class="text-center">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -12,8 +12,8 @@
           <a class="navbar-brand" href="#">G3</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- collapsing navbar taken from bootstrap example 1-->
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="Details">Weather Details</router-link></li>
@@ -22,8 +22,10 @@
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>
-    <h2>Welcome to our Weather Forecast App</h2>
-    <router-view></router-view>
+    <h1>Good Afternoon Chad!</h1>
+    <div class="container-fluid">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 

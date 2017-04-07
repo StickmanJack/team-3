@@ -1,12 +1,16 @@
 <template>
-  <div> <!--required wrapping div-->
-    <div class="col-sm-8 well">
-        <p>Weather map</p>
-    </div>
-    <div class="col-sm-2">
-    </div>
-    <div class="col-sm-5 well">
-        <p>Local Details</p>
+  <div><!--required wrapping div-->
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="well">
+          <p>Weather map</p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="well">
+            <p>Local Details</p>
+          </div>
+      </div>
     </div>
   </div><!--end req wrapping div-->
 </template>
@@ -15,10 +19,8 @@
 export default {
   data () {
     return {
-      quote: 'details'
     }
   }
-
 }
 </script>
 <style>
