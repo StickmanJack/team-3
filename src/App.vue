@@ -22,7 +22,7 @@
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>
-    <h1>Good Afternoon Chad!</h1>
+    <div class="vertical-buffer-3"></div>
     <div class="container-fluid">
       <router-view></router-view>
     </div>
@@ -41,6 +41,9 @@ export default {
 </script>
 
 <style>
+  /* Give some headroom to containers. Should be moved to global css*/
+.vertical-buffer-3 {margin-top: 3em;}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,14 +1,17 @@
 <template>
   <div><!--required wrapping div-->
-    <div class="row">
-      <div class="col-sm-6">
+    <h1>Today's Detailed Forecast</h1>
+    <div class="row row-eq-height">
+      <div class="col-sm-6 tall-col">
         <div class="well">
           <p>Weather map</p>
+          <img src="../assets/demo-weathermap.png">
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 tall-col">
           <div class="well">
             <p>Local Details</p>
+            <p>{{localTemp}} F</p>
           </div>
       </div>
     </div>
@@ -19,11 +22,34 @@
 export default {
   data () {
     return {
+      localTemp: '75'
     }
   }
 }
 </script>
 <style>
+
+    .row-eq-height {
+      flex-direction:row;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display:         flex;
+    }
+
+    /* Give some headroom to containers. Should be moved to global css*/
+    .vertical-buffer-3 {margin-top: 3em;}
+
+    /* extend col content to max height, works with row-eq-height */
+    .tall-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tall-col div {
+      flex: 1;
+    }
+
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
       margin-bottom: 0;

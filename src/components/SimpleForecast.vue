@@ -1,6 +1,6 @@
 <template>
   <div> <!--required wrapping div-->
-    <div class="vertical-buffer-3"></div>
+    <h1>Five Day Forecast</h1>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-6">
@@ -10,25 +10,26 @@
       </div>
     </div>
     <div class="vertical-buffer-3"></div>
-    <div class="row">
-      <div class="col-sm-3 push-right">
+    <div class="row row-eq-height">
+      <div class="col-sm-3 tall-col">
           <div class="well">
             <p>Day 2</p>
           </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 tall-col">
           <div class="well">
             <p>Day 3</p>
           </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 tall-col">
           <div class="well">
             <p>Day 4</p>
           </div>
       </div>
-      <div class="col-sm-3 push-left">
+      <div class="col-sm-3 tall-col">
           <div class="well">
             <p>Day 5</p>
+            <p>80 F</p>
           </div>
       </div>
     </div>
@@ -47,8 +48,26 @@ export default {
 </script>
 <style>
 
+    .row-eq-height {
+      flex-direction:row;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display:         flex;
+    }
+
     /* Give some headroom to containers. Should be moved to global css*/
     .vertical-buffer-3 {margin-top: 3em;}
+
+    /* extend col content to max height */
+    .tall-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tall-col div {
+      flex: 1;
+    }
 
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
