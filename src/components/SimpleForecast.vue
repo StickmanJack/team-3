@@ -1,12 +1,15 @@
 <template>
   <div> <!--required wrapping div-->
-    <h1>Five Day Forecast</h1>
+    <h1>Five Day Forecast for {{localCity}}</h1>
     <div class="vertical-buffer-3"></div>
     <div class="row">
       <div class="col-sm-2"></div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-center">
         <div class="well">
-          <p>Day 1 (Current Day)</p>
+          <h2>Day 1 (Current Day)</h2>
+          <img src="../assets/demo-sunny.png" width="100" height="100">
+          <p>{{day1HighTemp}}/{{day1LowTemp}} F</p>
+          <p>{{day1Windspeed}} MPH</p>
         </div>
       </div>
     </div>
@@ -17,23 +20,34 @@
         <div class="row row-eq-height">
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <p>Day 2</p>
+                <h2>Day 2</h2>
+                <img src="../assets/demo-sunny.png" width="100" height="100">
+                <p>{{day2HighTemp}}/{{day2LowTemp}} F</p>
+                <p>{{day2Windspeed}} MPH</p>
               </div>
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <p>Day 3</p>
+                <h2>Day 3</h2>
+                <img src="../assets/demo-sunny.png" width="100" height="100">
+                <p>{{day3HighTemp}}/{{day3LowTemp}} F</p>
+                <p>{{day3Windspeed}} MPH</p>
               </div>
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <p>Day 4</p>
+                <h2>Day 4</h2>
+                <img src="../assets/demo-sunny.png" width="100" height="100">
+                <p>{{day4HighTemp}}/{{day4LowTemp}} F</p>
+                <p>{{day4Windspeed}} MPH</p>
               </div>
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <p>Day 5</p>
-                <p>80 F</p>
+                <h2>Day 5</h2>
+                <img src="../assets/demo-sunny.png" width="100" height="100">
+                <p>{{day5HighTemp}}/{{day5LowTemp}} F</p>
+                <p>{{day5Windspeed}} MPH</p>
               </div>
           </div>
         </div>
@@ -47,7 +61,31 @@
 export default {
   data () {
     return {
+      localCity: 'Springfield',
+      day1HighTemp: '75',
+      day1LowTemp: '50',
+      day1Weather: 'sunny',
+      day1Windspeed: '1.67',
 
+      day2HighTemp: '100',
+      day2LowTemp: '45',
+      day2Weather: 'raining',
+      day2Windspeed: '30',
+
+      day3HighTemp: '25',
+      day3LowTemp: '30',
+      day3Weather: 'snow',
+      day3Windspeed: '1.2',
+
+      day4HighTemp: '50',
+      day4LowTemp: '65',
+      day4Weather: 'cloudy',
+      day4Windspeed: '2',
+
+      day5HighTemp: '70',
+      day5LowTemp: '55',
+      day5Weather: 'sunny',
+      day5Windspeed: '1.5'
     }
   }
 
@@ -110,5 +148,10 @@ export default {
 
     .container-fluid{
         background-color: white;
+    }
+
+    .col-center{
+      float: none;
+      margin: 0 auto;
     }
   </style>
