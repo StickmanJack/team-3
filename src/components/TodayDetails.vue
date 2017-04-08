@@ -24,6 +24,10 @@
             <p>{{humidity}}%</p>
             <h4>Wind:</h4>
             <p>{{speed}} mph {{direction}}</p>
+            <h4>Sunrise</h4>
+            <p>{{sunrise}} am</p>
+            <h4>Sunset</h4>
+            <p>{{sunset}} am</p>
           </div>
         </div>
       <div class="col-sm-1"></div>
@@ -41,7 +45,9 @@ export default {
       lowTemp: '68',
       humidity: '86',
       speed: '5.1',
-      direction: 'NE'
+      direction: 'NE',
+      sunrise: '6:45',
+      sunset: '7:01'
     }
   }
 }
