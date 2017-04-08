@@ -27,7 +27,7 @@
             <h4>Sunrise</h4>
             <p>{{sunrise}} am</p>
             <h4>Sunset</h4>
-            <p>{{sunset}} am</p>
+            <p>{{sunset}} pm</p>
           </div>
         </div>
       <div class="col-sm-1"></div>
