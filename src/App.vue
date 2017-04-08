@@ -22,8 +22,7 @@
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>
-    <div class="vertical-buffer-3"></div>
-    <div id= "under-header" class="container-fluid" >
+    <div  id="under-header" class="container-fluid" >
       <router-view></router-view>
     </div>
   </div>
@@ -44,6 +43,10 @@ export default {
   /* Give some headroom to containers. Should be moved to global css*/
 .vertical-buffer-3 {margin-top: 3em;}
 
+  .well {
+   background-color: rgba(85, 105, 245, 0.4);
+  }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,4 +55,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+  #under-header {
+    height: 100%;
+    background-image: url('./assets/demo-background.png');
+    background-position: center center;
+    background-size: cover;
+  }
 </style>
