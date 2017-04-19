@@ -43,23 +43,45 @@
 export default {
   data () {
     return {
-      quote: quote,
-      qauthor: 'Dijkstra',
+      quote: '',
+      qauthor: '',
       localCity: 'Springfield',
-      localTemp: '75',
+      localTemp: '',
       gotd: 'Finish static views!'
     }
+  },
+  mounted: function () {
+    this.getQuote()
+    this.getCurrentTemp()
+  },
+  methods: {
+    // Access quote API and get the 'Quote Of The Day'
+    getQuote: function () {
+      // Quote category set as 'inspire'
+      let url = 'http://quotes.rest/qod.json?category=inspire'
+      fetch(url).then(function (response) {
+        return response.json()
+      }).then(function (json) {
+        // Set the quote and author
+        this.quote = json.contents.quotes[0].quote
+        this.qauthor = json.contents.quotes[0].author
+      }.bind(this)).catch(function (reason) {
+        console.log(reason)
+      })
+    },
+    getCurrentTemp: function () {
+      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=65808,us' +
+                '&units=imperial' +
+                '&appid=0c2cf2d862aed4851bd89af90698bc92'
+      fetch(url).then(function (response) {
+        return response.json()
+      }).then(function (json) {
+        this.localTemp = json.main.temp
+      }.bind(this)).catch(function (reason) {
+        console.log(reason)
+      })
+    }
   }
-}
-var quote = getQuote()
-function getQuote () {
-  let url = 'http://quotes.rest/qod.json?category=inspire'
-  fetch(url).then(function (result) {
-    return result.json()
-  }).then(function (json) {
-    quote = document.createTextNode(json.contents.quotes[0].quote)
-    console.log(quote)
-  })
 }
 </script>
 <style>
