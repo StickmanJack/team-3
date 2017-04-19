@@ -1,5 +1,5 @@
 <template>
-  <div> <!--required wrapping div-->
+  <div id="fiveday"> <!--required wrapping div-->
     <h1>Five Day Forecast for {{localCity}}</h1>
     <div class="vertical-buffer-3"></div>
     <div class="row">
@@ -7,9 +7,10 @@
       <div class="col-sm-6 col-center">
         <div class="well">
           <h2>Day 1 (Current Day)</h2>
-          <img src="../assets/demo-sunny.png" width="100" height="100">
-          <p>{{day1HighTemp}}/{{day1LowTemp}} F</p>
-          <p>{{day1Windspeed}} MPH</p>
+          <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[0].weather">
+          <p>{{this.day[0].highTemp}}/{{this.day[0].lowTemp}} <span v-html="deg"></span>F</p>
+          <p>{{this.day[0].weather}}</p>
+          <p>{{this.day[0].windspeed}} MPH</p>
         </div>
       </div>
     </div>
@@ -21,33 +22,37 @@
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>Day 2</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100">
-                <p>{{day2HighTemp}}/{{day2LowTemp}} F</p>
-                <p>{{day2Windspeed}} MPH</p>
+                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[1].weather">
+                <p>{{this.day[1].highTemp}}/{{this.day[1].lowTemp}} <span v-html="deg"></span>F</p>
+                <p>{{this.day[1].weather}}</p>
+                <p>{{this.day[1].windspeed}} MPH</p>
               </div>
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>Day 3</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100">
-                <p>{{day3HighTemp}}/{{day3LowTemp}} F</p>
-                <p>{{day3Windspeed}} MPH</p>
+                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[2].weather">
+                <p>{{this.day[2].highTemp}}/{{this.day[2].lowTemp}} <span v-html="deg"></span>F</p>
+                <p>{{this.day[2].weather}}</p>
+                <p>{{this.day[2].windspeed}} MPH</p>
               </div>
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>Day 4</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100">
-                <p>{{day4HighTemp}}/{{day4LowTemp}} F</p>
-                <p>{{day4Windspeed}} MPH</p>
+                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[3].weather">
+                <p>{{this.day[3].highTemp}}/{{this.day[3].lowTemp}} <span v-html="deg"></span>F</p>
+                <p>{{this.day[3].weather}}</p>
+                <p>{{this.day[3].windspeed}} MPH</p>
               </div>
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>Day 5</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100">
-                <p>{{day5HighTemp}}/{{day5LowTemp}} F</p>
-                <p>{{day5Windspeed}} MPH</p>
+                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[4].weather">
+                <p>{{this.day[4].highTemp}}/{{this.day[4].lowTemp}} <span v-html="deg"></span>F</p>
+                <p>{{this.day[4].weather}}</p>
+                <p>{{this.day[4].windspeed}} MPH</p>
               </div>
           </div>
         </div>
@@ -59,36 +64,67 @@
 
 <script>
 export default {
+  name: 'fiveday',
   data () {
     return {
       localCity: 'Springfield',
-      day1HighTemp: '75',
-      day1LowTemp: '50',
-      day1Weather: 'sunny',
-      day1Windspeed: '1.67',
-
-      day2HighTemp: '100',
-      day2LowTemp: '45',
-      day2Weather: 'raining',
-      day2Windspeed: '30',
-
-      day3HighTemp: '25',
-      day3LowTemp: '30',
-      day3Weather: 'snow',
-      day3Windspeed: '1.2',
-
-      day4HighTemp: '50',
-      day4LowTemp: '65',
-      day4Weather: 'cloudy',
-      day4Windspeed: '2',
-
-      day5HighTemp: '70',
-      day5LowTemp: '55',
-      day5Weather: 'sunny',
-      day5Windspeed: '1.5'
+      day: [
+        { highTemp: '0',
+          lowTemp: '0',
+          weather: '0',
+          windspeed: '0'},
+        { highTemp: '0',
+          lowTemp: '0',
+          weather: '0',
+          windspeed: '0'},
+        { highTemp: '0',
+          lowTemp: '0',
+          weather: '0',
+          windspeed: '0'},
+        { highTemp: '0',
+          lowTemp: '0',
+          weather: '0',
+          windspeed: '0'},
+        { highTemp: '0',
+          lowTemp: '0',
+          weather: '0',
+          windspeed: '0'}
+      ],
+      deg: '&deg;'
+    }
+  },
+  mounted: function () {
+    this.getWeather()
+  },
+  methods: {
+    getWeather: function () {
+      var requestString = 'http://api.openweathermap.org/data/2.5/forecast?zip=' +
+                          '65897,us' +
+                          '&format=json' +
+                          '&units=imperial' +
+                          '&APPID=0c2cf2d862aed4851bd89af90698bc92'
+      fetch(requestString)
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        console.log(data)
+        console.log(this)
+        if (data.list.length > 0) {
+          for (var i = 0; i < 5; i++) {
+            var day = data.list[ i * 8 ]
+            this.day[i].highTemp = day.main['temp_max']
+            this.day[i].lowTemp = day.main['temp_min']
+            this.day[i].weather = day.weather[0]['description']
+            this.day[i].windspeed = day.wind['speed']
+          }
+        }
+      }.bind(this))
+      .catch(function (reason) {
+        console.log(reason)
+      })
     }
   }
-
 }
 </script>
 <style>
