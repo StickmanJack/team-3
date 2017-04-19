@@ -11,6 +11,7 @@
           <img src="../assets/demo-sunny.png" width="100" height="100">
           <h3>{{localCity}}</h3>
           <p>{{localTemp}} F</p>
+          <p>{{conditions}}</p>
         </div>
       </div>
       <div class="col-sm-8 tall-col">
@@ -47,6 +48,7 @@ export default {
       qauthor: '',
       localCity: 'Springfield',
       localTemp: '',
+      conditions: '',
       gotd: 'Finish static views!'
     }
   },
@@ -70,13 +72,16 @@ export default {
       })
     },
     getCurrentTemp: function () {
+      // Access weather API and get current weather info
       let url = 'http://api.openweathermap.org/data/2.5/weather?zip=65808,us' +
-                '&units=imperial' +
+                '&units=imperial' + // Unit default is Kelvin
                 '&appid=0c2cf2d862aed4851bd89af90698bc92'
       fetch(url).then(function (response) {
         return response.json()
       }).then(function (json) {
+        // Set current temperature and conditions
         this.localTemp = json.main.temp
+        this.conditions = json.weather[0].main
       }.bind(this)).catch(function (reason) {
         console.log(reason)
       })
