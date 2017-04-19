@@ -11,6 +11,7 @@
           <img src="../assets/demo-sunny.png" width="100" height="100">
           <h3>{{localCity}}</h3>
           <p>{{localTemp}} F</p>
+          <p>{{conditions}}</p>
         </div>
       </div>
       <div class="col-sm-8 tall-col">
@@ -35,27 +36,57 @@
       </div>
     </div>
   </div><!--end req wrapping div-->
-
-
 </template>
-
 <script>
 export default {
   data () {
     return {
-      quote: '\'Simplicity is prerequisite to reliability\'',
-      qauthor: 'Dijkstra',
+      quote: '',
+      qauthor: '',
       localCity: 'Springfield',
-      localTemp: '75',
+      localTemp: '',
+      conditions: '',
       gotd: 'Finish static views!'
     }
+  },
+  mounted: function () {
+    this.getQuote()
+    this.getCurrentTemp()
+  },
+  methods: {
+    // Access quote API and get the 'Quote Of The Day'
+    getQuote: function () {
+      // Quote category set as 'inspire'
+      let url = 'http://quotes.rest/qod.json?category=inspire'
+      fetch(url).then(function (response) {
+        return response.json()
+      }).then(function (json) {
+        // Set the quote and author
+        this.quote = json.contents.quotes[0].quote
+        this.qauthor = json.contents.quotes[0].author
+      }.bind(this)).catch(function (reason) {
+        console.log(reason)
+      })
+    },
+    // Access weather API and get current weather info
+    getCurrentTemp: function () {
+      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=65808,us' +
+                '&units=imperial' + // Unit default is Kelvin
+                '&appid=0c2cf2d862aed4851bd89af90698bc92'
+      fetch(url).then(function (response) {
+        return response.json()
+      }).then(function (json) {
+        // Set current temperature and conditions
+        this.localTemp = json.main.temp
+        this.conditions = json.weather[0].main
+      }.bind(this)).catch(function (reason) {
+        console.log(reason)
+      })
+    }
   }
-
 }
 </script>
 <style>
-
-
     #q-author {
       text-align: right;
       margin-right: 10em;
@@ -132,8 +163,7 @@ export default {
     }
 
     .container-fluid{
-        background-color: white; 
-
+        background-color: white;
     }
 
     #under-header {
@@ -142,4 +172,4 @@ export default {
       background-size: 100%;
       background-repeat: no-repeat;
     }
-  </style>
+</style>
