@@ -8,7 +8,7 @@
         <div class="well">
           <h2>Day 1 (Current Day)</h2>
           <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[0].weather">
-          <p>{{this.day[0].highTemp}}/{{this.day[0].highTemp}} F</p>
+          <p>{{this.day[0].highTemp}}/{{this.day[0].lowTemp}} <span v-html="deg"></span>F</p>
           <p>{{this.day[0].weather}}</p>
           <p>{{this.day[0].windspeed}} MPH</p>
         </div>
@@ -23,7 +23,7 @@
               <div class="well">
                 <h2>Day 2</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[1].weather">
-                <p>{{this.day[1].highTemp}}/{{this.day[1].highTemp}} F</p>
+                <p>{{this.day[1].highTemp}}/{{this.day[1].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[1].weather}}</p>
                 <p>{{this.day[1].windspeed}} MPH</p>
               </div>
@@ -32,7 +32,7 @@
               <div class="well">
                 <h2>Day 3</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[2].weather">
-                <p>{{this.day[2].highTemp}}/{{this.day[2].highTemp}} F</p>
+                <p>{{this.day[2].highTemp}}/{{this.day[2].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[2].weather}}</p>
                 <p>{{this.day[2].windspeed}} MPH</p>
               </div>
@@ -41,7 +41,7 @@
               <div class="well">
                 <h2>Day 4</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[3].weather">
-                <p>{{this.day[3].highTemp}}/{{this.day[3].highTemp}} F</p>
+                <p>{{this.day[3].highTemp}}/{{this.day[3].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[3].weather}}</p>
                 <p>{{this.day[3].windspeed}} MPH</p>
               </div>
@@ -50,7 +50,7 @@
               <div class="well">
                 <h2>Day 5</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[4].weather">
-                <p>{{this.day[4].highTemp}}/{{this.day[4].highTemp}} F</p>
+                <p>{{this.day[4].highTemp}}/{{this.day[4].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[4].weather}}</p>
                 <p>{{this.day[4].windspeed}} MPH</p>
               </div>
@@ -89,7 +89,8 @@ export default {
           lowTemp: '0',
           weather: '0',
           windspeed: '0'}
-      ]
+      ],
+      deg: '&deg;'
     }
   },
   mounted: function () {
