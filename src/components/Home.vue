@@ -36,10 +36,7 @@
       </div>
     </div>
   </div><!--end req wrapping div-->
-
-
 </template>
-
 <script>
 export default {
   data () {
@@ -71,8 +68,8 @@ export default {
         console.log(reason)
       })
     },
+    // Access weather API and get current weather info
     getCurrentTemp: function () {
-      // Access weather API and get current weather info
       let url = 'http://api.openweathermap.org/data/2.5/weather?zip=65808,us' +
                 '&units=imperial' + // Unit default is Kelvin
                 '&appid=0c2cf2d862aed4851bd89af90698bc92'
@@ -90,8 +87,6 @@ export default {
 }
 </script>
 <style>
-
-
     #q-author {
       text-align: right;
       margin-right: 10em;
@@ -169,7 +164,6 @@ export default {
 
     .container-fluid{
         background-color: white;
-
     }
 
     #under-header {
@@ -178,4 +172,4 @@ export default {
       background-size: 100%;
       background-repeat: no-repeat;
     }
-  </style>
+</style>
