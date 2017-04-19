@@ -43,14 +43,23 @@
 export default {
   data () {
     return {
-      quote: '\'Simplicity is prerequisite to reliability\'',
+      quote: quote,
       qauthor: 'Dijkstra',
       localCity: 'Springfield',
       localTemp: '75',
       gotd: 'Finish static views!'
     }
   }
-
+}
+var quote = getQuote()
+function getQuote () {
+  let url = 'http://quotes.rest/qod.json?category=inspire'
+  fetch(url).then(function (result) {
+    return result.json()
+  }).then(function (json) {
+    quote = document.createTextNode(json.contents.quotes[0].quote)
+    console.log(quote)
+  })
 }
 </script>
 <style>
@@ -132,7 +141,7 @@ export default {
     }
 
     .container-fluid{
-        background-color: white; 
+        background-color: white;
 
     }
 
