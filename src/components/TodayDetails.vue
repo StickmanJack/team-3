@@ -6,7 +6,7 @@
       <div class="col-sm-6 tall-col">
         <div class="well">
           <h3>Weather map</h3>
-          <img src="../assets/demo-weathermap.png">
+          <p>put something new here</p>
         </div>
       </div>
       <div class="col-sm-4 tall-col">
