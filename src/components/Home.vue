@@ -10,8 +10,8 @@
           <h2>Current Weather</h2>
           <img src="../assets/demo-sunny.png" width="100" height="100">
           <h3>{{localCity}}</h3>
-          <p>{{localTemp}} F</p>
-          <p>{{conditions}}</p>
+          <h2>{{localTemp}} F</h2>
+          <h4>{{conditions}}</h4>
         </div>
       </div>
       <div class="col-sm-8 tall-col">
@@ -77,7 +77,7 @@ export default {
         return response.json()
       }).then(function (json) {
         // Set current temperature and conditions
-        this.localTemp = json.main.temp
+        this.localTemp = json.main.temp + String.fromCharCode(176)
         this.conditions = json.weather[0].main
       }.bind(this)).catch(function (reason) {
         console.log(reason)
@@ -112,8 +112,8 @@ export default {
     }
 
     /* Give some headroom to containers. Should be moved to global css*/
-    .vertical-buffer-3 {margin-top: 3em;}
-    .vertical-buffer-5 {margin-top: 5em;}
+    .vertical-buffer-3 {margin-top: 2.5em;}
+    .vertical-buffer-5 {margin-top: 2.5em;}
 
     /* extend col content to max height, works with row-eq-height */
     .tall-col {
