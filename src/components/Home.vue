@@ -21,6 +21,7 @@
               <h2 class="section-title">Quote of the Day:</h2>
               <p class="section-content">{{quote}}</p>
               <p id="q-author">- {{qauthor}}</p>
+              <button v-on:click="alertCookie ()"> Run Cookies </button>
             </div>
           </div>
         </div>
@@ -38,6 +39,9 @@
   </div><!--end req wrapping div-->
 </template>
 <script>
+document.cookie = 'name=Radeeb Bashir'
+document.cookie = 'favorite_food= Spicy'
+
 export default {
   data () {
     return {
@@ -68,6 +72,10 @@ export default {
         console.log(reason)
       })
     },
+    alertCookie: function () {
+      alert(document.cookie)
+    },
+
     // Access weather API and get current weather info
     getCurrentTemp: function () {
       let url = 'http://api.openweathermap.org/data/2.5/weather?zip=65808,us' +
