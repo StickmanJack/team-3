@@ -1,7 +1,9 @@
 <template>
   <div> <!--required wrapping div-->
     <div class="vertical-buffer-5"></div>
-    <h1>Good Afternoon Chad!</h1>
+    <h1>Good Afternoon {{username}} !</h1>
+    <button v-on:click="checkCookie ()"> Enter Name and Goal of the Day </button>
+    <button v-on:click="deleteCookie ()"> Reset Name and Goal </button>
     <div class="vertical-buffer-5"></div>
     <div class="row row-eq-height">
       <div class="col-sm-1"></div>
@@ -21,7 +23,7 @@
               <h2 class="section-title">Quote of the Day:</h2>
               <p class="section-content">{{quote}}</p>
               <p id="q-author">- {{qauthor}}</p>
-              <button v-on:click="alertCookie ()"> Run Cookies </button>
+
             </div>
           </div>
         </div>
@@ -39,18 +41,17 @@
   </div><!--end req wrapping div-->
 </template>
 <script>
-document.cookie = 'name=Radeeb Bashir'
-document.cookie = 'favorite_food= Spicy'
 
 export default {
   data () {
     return {
+      username: this.getCookie('username'),
       quote: '',
       qauthor: '',
       localCity: 'Springfield',
       localTemp: '',
       conditions: '',
-      gotd: 'Finish static views!'
+      gotd: this.getCookie('goal')
     }
   },
   mounted: function () {
@@ -72,9 +73,6 @@ export default {
         console.log(reason)
       })
     },
-    alertCookie: function () {
-      alert(document.cookie)
-    },
 
     // Access weather API and get current weather info
     getCurrentTemp: function () {
@@ -90,6 +88,50 @@ export default {
       }.bind(this)).catch(function (reason) {
         console.log(reason)
       })
+    },
+
+    setCookie: function (cname, cvalue, cname2, cvalue2, exdays) {
+      var d = new Date()
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
+      var expires = 'expires=' + d.toGMTString()
+      document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
+      document.cookie = cname2 + '=' + cvalue2 + ';'
+      this.username = cvalue
+      this.gotd = cvalue2
+    },
+
+    getCookie: function (cname) {
+      var name = cname + '='
+      var decodedCookie = decodeURIComponent(document.cookie)
+      var ca = decodedCookie.split(';')
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i]
+        while (c.charAt(0) === ' ') {
+          c = c.substring(1)
+        }
+        if (c.indexOf(name) === 0) {
+          return c.substring(name.length, c.length)
+        }
+      }
+      return ''
+    },
+
+    checkCookie: function () {
+      var user = this.getCookie('username')
+      var goal = this.getCookie('goal')
+      if (user !== '') {
+        alert('Welcome again ' + user)
+      } else {
+        user = prompt('Please enter your name:', '')
+        goal = prompt('Please enter your Goal for today:', '')
+        if (user !== '' && user !== null && goal !== '') {
+          this.setCookie('username', user, 'goal', goal, 1)
+        }
+      }
+    },
+    deleteCookie: function () {
+      document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+      document.cookie = 'goal=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
     }
   }
 }
