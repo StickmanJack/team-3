@@ -10,7 +10,7 @@
       <div class="col-sm-2 tall-col">
         <div class="well">
           <h2>Current Weather</h2>
-          <img src="../assets/demo-sunny.png" width="100" height="100">
+          <img id="weather-icon" :src="getImgUrl('Clear.png')" width="100" height="100">
           <h3>{{localCity}}</h3>
           <p>{{localTemp}} F</p>
           <p>{{conditions}}</p>
@@ -85,6 +85,12 @@ export default {
         // Set current temperature and conditions
         this.localTemp = json.main.temp
         this.conditions = json.weather[0].main
+        document.getElementById('weather-icon').src = this.getImgUrl(this.conditions + '.png')
+        /*
+        if (this.conditions === 'Clouds') {
+          document.getElementById('weather-icon').src = this.getImgUrl('Cloudy.png')
+        }
+        */
       }.bind(this)).catch(function (reason) {
         console.log(reason)
       })
@@ -132,6 +138,11 @@ export default {
     deleteCookie: function () {
       document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       document.cookie = 'goal=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+    },
+
+    getImgUrl: function (img) {
+      var images = require.context('../assets/', false, /\.png$/)
+      return images('./' + img)
     }
   }
 }
