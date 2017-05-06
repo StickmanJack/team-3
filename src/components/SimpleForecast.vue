@@ -6,7 +6,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-6 col-center">
         <div class="well">
-          <h2>Day 1 (Current Day)</h2>
+          <h2>{{this.day[0].weekday}} (Current Day)</h2>
           <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[0].weather">
           <p>{{this.day[0].highTemp}}/{{this.day[0].lowTemp}} <span v-html="deg"></span>F</p>
           <p>{{this.day[0].weather}}</p>
@@ -21,7 +21,7 @@
         <div class="row row-eq-height">
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <h2>Day 2</h2>
+                <h2>{{this.day[1].weekday}}</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[1].weather">
                 <p>{{this.day[1].highTemp}}/{{this.day[1].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[1].weather}}</p>
@@ -30,7 +30,7 @@
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <h2>Day 3</h2>
+                <h2>{{this.day[2].weekday}}</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[2].weather">
                 <p>{{this.day[2].highTemp}}/{{this.day[2].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[2].weather}}</p>
@@ -39,7 +39,7 @@
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <h2>Day 4</h2>
+                <h2>{{this.day[3].weekday}}</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[3].weather">
                 <p>{{this.day[3].highTemp}}/{{this.day[3].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[3].weather}}</p>
@@ -48,7 +48,7 @@
           </div>
           <div class="col-sm-3 tall-col">
               <div class="well">
-                <h2>Day 5</h2>
+                <h2>{{this.day[4].weekday}}</h2>
                 <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[4].weather">
                 <p>{{this.day[4].highTemp}}/{{this.day[4].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[4].weather}}</p>
@@ -72,29 +72,35 @@ export default {
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
-          windspeed: '0'},
+          windspeed: '0',
+          dayOfWeek: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
-          windspeed: '0'},
+          windspeed: '0',
+          dayOfWeek: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
-          windspeed: '0'},
+          windspeed: '0',
+          weekday: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
-          windspeed: '0'},
+          windspeed: '0',
+          weekday: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
-          windspeed: '0'}
+          windspeed: '0',
+          weekday: '0'}
       ],
       deg: '&deg;'
     }
   },
   mounted: function () {
     this.getWeather()
+    this.getDays()
   },
   methods: {
     getWeather: function () {
@@ -123,6 +129,23 @@ export default {
       .catch(function (reason) {
         console.log(reason)
       })
+    },
+    getDays: function () {
+      var currentDate = new Date()
+      var weekday = new Array(7)
+      weekday[0] = 'Sunday'
+      weekday[1] = 'Monday'
+      weekday[2] = 'Tuesday'
+      weekday[3] = 'Wednesday'
+      weekday[4] = 'Thursday'
+      weekday[5] = 'Friday'
+      weekday[6] = 'Saturday'
+
+      this.day[0].weekday = weekday[currentDate.getDay()]
+      this.day[1].weekday = weekday[new Date(currentDate.setDate(currentDate.getDate() + 1)).getDay()]
+      this.day[2].weekday = weekday[new Date(currentDate.setDate(currentDate.getDate() + 1)).getDay()]
+      this.day[3].weekday = weekday[new Date(currentDate.setDate(currentDate.getDate() + 1)).getDay()]
+      this.day[4].weekday = weekday[new Date(currentDate.setDate(currentDate.getDate() + 1)).getDay()]
     }
   }
 }
