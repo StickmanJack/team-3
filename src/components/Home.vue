@@ -85,12 +85,8 @@ export default {
         // Set current temperature and conditions
         this.localTemp = json.main.temp
         this.conditions = json.weather[0].main
+        // Updates weather icon according to current conditions
         document.getElementById('weather-icon').src = this.getImgUrl(this.conditions + '.png')
-        /*
-        if (this.conditions === 'Clouds') {
-          document.getElementById('weather-icon').src = this.getImgUrl('Cloudy.png')
-        }
-        */
       }.bind(this)).catch(function (reason) {
         console.log(reason)
       })
