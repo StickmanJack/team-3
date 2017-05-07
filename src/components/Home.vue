@@ -13,7 +13,7 @@
       <div class="col-sm-2 tall-col">
         <div class="well">
           <h2>Current Weather</h2>
-          <img id="weather-icon" :src="getImgUrl('Clear.png')" width="100" height="100">
+          <img id="weather-icon" :src="getImgUrl('blank.png')" width="100" height="100">
           <h3>{{localCity}}</h3>
           <h3>{{localTemp}}</h3>
           <h4>{{conditions}}</h4>
@@ -149,7 +149,7 @@ export default {
       this.localCity = ''
       this.localTemp = ''
       this.conditions = ''
-      document.getElementById('weather-icon').src = this.getImgUrl('Clear.png')
+      document.getElementById('weather-icon').src = this.getImgUrl('blank.png')
     },
 
     getImgUrl: function (img) {
