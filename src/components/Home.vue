@@ -1,18 +1,21 @@
 <template>
   <div> <!--required wrapping div-->
     <div class="vertical-buffer-5"></div>
-    <h1>Good Afternoon {{username}} !</h1>
-    <button v-on:click="checkCookie ()"> Enter Name and Goal of the Day </button>
-    <button v-on:click="deleteCookie ()"> Reset Name and Goal </button>
+    <h1>Good Afternoon {{username}}!</h1>
+    <input v-model.lazy="username" placeholder="name">
+    <input v-model.lazy="gotd" placeholder="goal">
+    <input v-model="zip" placeholder="zip code"><br/><br/>
+    <button v-on:click="checkCookie ()"> Fetch Weather </button>
+    <button v-on:click="deleteCookie ()"> Reset </button>
     <div class="vertical-buffer-5"></div>
     <div class="row row-eq-height">
       <div class="col-sm-1"></div>
       <div class="col-sm-2 tall-col">
         <div class="well">
           <h2>Current Weather</h2>
-          <img id="weather-icon" :src="getImgUrl('Clear.png')" width="100" height="100">
+          <img id="weather-icon" :src="getImgUrl('blank.png')" width="100" height="100">
           <h3>{{localCity}}</h3>
-          <h2>{{localTemp}} F</h2>
+          <h3>{{localTemp}}</h3>
           <h4>{{conditions}}</h4>
         </div>
       </div>
@@ -23,7 +26,6 @@
               <h2 class="section-title">Quote of the Day:</h2>
               <p class="section-content">{{quote}}</p>
               <p id="q-author">- {{qauthor}}</p>
-
             </div>
           </div>
         </div>
@@ -48,15 +50,16 @@ export default {
       username: this.getCookie('username'),
       quote: '',
       qauthor: '',
-      localCity: 'Springfield',
+      localCity: '',
       localTemp: '',
       conditions: '',
-      gotd: this.getCookie('goal')
+      gotd: this.getCookie('goal'),
+      zip: this.getCookie('zip')
     }
   },
   mounted: function () {
     this.getQuote()
-    this.getCurrentTemp()
+    // this.getCurrentConditions()
   },
   methods: {
     // Access quote API and get the 'Quote Of The Day'
@@ -75,16 +78,20 @@ export default {
     },
 
     // Access weather API and get current weather info
-    getCurrentTemp: function () {
-      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=65808,us' +
+    getCurrentConditions: function () {
+      this.localCity = 'Loading...'
+      this.localTemp = 'Loading...'
+      this.conditions = 'Loading...'
+      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + this.zip + ',us' +
                 '&units=imperial' + // Unit default is Kelvin
                 '&appid=0c2cf2d862aed4851bd89af90698bc92'
       fetch(url).then(function (response) {
         return response.json()
       }).then(function (json) {
         // Set current temperature and conditions
-        this.localTemp = json.main.temp + String.fromCharCode(176)
+        this.localTemp = json.main.temp + String.fromCharCode(176) + ' F'
         this.conditions = json.weather[0].main
+        this.localCity = json.name
         // Updates weather icon according to current conditions
         document.getElementById('weather-icon').src = this.getImgUrl(this.conditions + '.png')
       }.bind(this)).catch(function (reason) {
@@ -92,14 +99,17 @@ export default {
       })
     },
 
-    setCookie: function (cname, cvalue, cname2, cvalue2, exdays) {
+    setCookie: function (cname, cvalue, cname2, cvalue2, cname3, cvalue3, exdays) {
       var d = new Date()
       d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
       var expires = 'expires=' + d.toGMTString()
       document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
       document.cookie = cname2 + '=' + cvalue2 + ';'
+      document.cookie = cname3 + '=' + cvalue3 + ';'
       this.username = cvalue
       this.gotd = cvalue2
+      this.zip = cvalue3
+      this.getCurrentConditions()
     },
 
     getCookie: function (cname) {
@@ -121,19 +131,25 @@ export default {
     checkCookie: function () {
       var user = this.getCookie('username')
       var goal = this.getCookie('goal')
-      if (user !== '') {
-        alert('Welcome again ' + user)
-      } else {
-        user = prompt('Please enter your name:', '')
-        goal = prompt('Please enter your Goal for today:', '')
-        if (user !== '' && user !== null && goal !== '') {
-          this.setCookie('username', user, 'goal', goal, 1)
-        }
+      var zip = this.getCookie('zip')
+      user = this.username
+      goal = this.gotd
+      zip = this.zip
+      if (user !== '' && user !== null && goal !== '' && zip !== '') {
+        this.setCookie('username', user, 'goal', goal, 'zip', zip, 1)
       }
     },
     deleteCookie: function () {
       document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       document.cookie = 'goal=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+      document.cookie = 'zip=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+      this.username = ''
+      this.gotd = ''
+      this.zip = ''
+      this.localCity = ''
+      this.localTemp = ''
+      this.conditions = ''
+      document.getElementById('weather-icon').src = this.getImgUrl('blank.png')
     },
 
     getImgUrl: function (img) {
