@@ -1,9 +1,12 @@
 <template>
   <div> <!--required wrapping div-->
     <div class="vertical-buffer-5"></div>
-    <h1>Good Afternoon {{username}} !</h1>
-    <button v-on:click="checkCookie ()"> Enter Name and Goal of the Day </button>
-    <button v-on:click="deleteCookie ()"> Reset Name and Goal </button>
+    <h1>Good Afternoon {{username}}!</h1>
+    <input v-model.lazy="username" placeholder="name">
+    <input v-model.lazy="gotd" placeholder="goal">
+    <input v-model="zip" placeholder="zip code"><br/><br/>
+    <button v-on:click="checkCookie ()"> Fetch Weather </button>
+    <button v-on:click="deleteCookie ()"> Reset </button>
     <div class="vertical-buffer-5"></div>
     <div class="row row-eq-height">
       <div class="col-sm-1"></div>
@@ -129,15 +132,11 @@ export default {
       var user = this.getCookie('username')
       var goal = this.getCookie('goal')
       var zip = this.getCookie('zip')
-      if (user !== '') {
-        alert('Welcome again ' + user)
-      } else {
-        user = prompt('Please enter your name:', '')
-        goal = prompt('Please enter your Goal for today:', '')
-        zip = prompt('Please enter your zip code:', '')
-        if (user !== '' && user !== null && goal !== '' && zip !== '') {
-          this.setCookie('username', user, 'goal', goal, 'zip', zip, 1)
-        }
+      user = this.username
+      goal = this.gotd
+      zip = this.zip
+      if (user !== '' && user !== null && goal !== '' && zip !== '') {
+        this.setCookie('username', user, 'goal', goal, 'zip', zip, 1)
       }
     },
     deleteCookie: function () {
