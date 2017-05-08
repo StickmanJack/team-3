@@ -16,17 +16,17 @@
             <p>{{description}}</p>
             <h4>Temperature:</h4>
             <p>{{localTemp}}</p>
-            <h4>High</h4>
+            <h4>High:</h4>
             <p>{{highTemp}}</p>
-            <h4>Low</h4>
+            <h4>Low:</h4>
             <p>{{lowTemp}}</p>
             <h4>Humidity:</h4>
             <p>{{humidity}}</p>
             <h4>Wind:</h4>
             <p>{{speed}} {{direction}}</p>
-            <h4>Sunrise</h4>
+            <h4>Sunrise:</h4>
             <p>{{sunrise}}</p>
-            <h4>Sunset</h4>
+            <h4>Sunset:</h4>
             <p>{{sunset}}</p>
           </div>
         </div>
@@ -86,8 +86,6 @@ export default {
         this.direction = d2d(json.wind.deg)
         this.sunrise = this.getTime(json.sys.sunrise) + ' am'
         this.sunset = this.getTime(json.sys.sunset) + ' pm'
-        // Updates weather icon according to current conditions
-        document.getElementById('weather-icon').src = this.getImgUrl(this.conditions + '.png')
       }.bind(this)).catch(function (reason) {
         console.log(reason)
       })
