@@ -95,12 +95,14 @@ export default {
           windspeed: '0',
           weekday: '0'}
       ],
-      deg: '&deg;'
+      deg: '&deg;',
+      zip: this.getCookie('zip')
     }
   },
   mounted: function () {
     this.getWeather()
     this.getDays()
+    // console.log(this.zip)
   },
   methods: {
     getWeather: function () {
@@ -146,6 +148,21 @@ export default {
       this.day[2].weekday = weekday[new Date(currentDate.setDate(currentDate.getDate() + 1)).getDay()]
       this.day[3].weekday = weekday[new Date(currentDate.setDate(currentDate.getDate() + 1)).getDay()]
       this.day[4].weekday = weekday[new Date(currentDate.setDate(currentDate.getDate() + 1)).getDay()]
+    },
+    getCookie: function (cname) {
+      var name = cname + '='
+      var decodedCookie = decodeURIComponent(document.cookie)
+      var ca = decodedCookie.split(';')
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i]
+        while (c.charAt(0) === ' ') {
+          c = c.substring(1)
+        }
+        if (c.indexOf(name) === 0) {
+          return c.substring(name.length, c.length)
+        }
+      }
+      return ''
     }
   }
 }
