@@ -59,7 +59,10 @@ export default {
   },
   mounted: function () {
     this.getQuote()
-    // this.getCurrentConditions()
+    // Automatically fetch weather when returning to this page from another
+    if (this.zip !== '') {
+      this.getCurrentConditions()
+    }
   },
   methods: {
     // Access quote API and get the 'Quote Of The Day'
