@@ -132,12 +132,9 @@ export default {
     },
 
     checkCookie: function () {
-      var user = this.getCookie('username')
-      var goal = this.getCookie('goal')
-      var zip = this.getCookie('zip')
-      user = this.username
-      goal = this.gotd
-      zip = this.zip
+      var user = this.username
+      var goal = this.gotd
+      var zip = this.zip
       if (user !== '' && user !== null && goal !== '' && zip !== '') {
         this.setCookie('username', user, 'goal', goal, 'zip', zip, 1)
       }
