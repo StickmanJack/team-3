@@ -3,13 +3,36 @@
     <h1>Today's Detailed Forecast</h1>
     <div class="row row-eq-height">
       <div class="col-sm-1"></div>
-      <div class="col-sm-6 tall-col">
-        <div class="well">
-          <h3>Weather map</h3>
-          <p>put something new here</p>
+      <div class="col-sm-5 tall-col">
+        <div class="well" id="test">
+          <h3>Hourly Forecast</h3>
+          <!-- 3 Hour Block 1 -->
+          <h4>{{this.hour[0].hour}}</h4>
+          <img class="icon" id="icon-0" :src="getImgUrl('blank.png')" width="90" height="90">
+          <p>{{this.hour[0].temp}}</p>
+          <p>{{this.hour[0].weather}}</p>
+          <p>{{this.hour[0].windspeed}} {{this.hour[0].direction}}</p>
+          <!-- 3 Hour Block 2 -->
+          <h4>{{this.hour[1].hour}}</h4>
+          <img class="icon" id="icon-1" :src="getImgUrl('blank.png')" width="90" height="90">
+          <p>{{this.hour[1].temp}}</p>
+          <p>{{this.hour[1].weather}}</p>
+          <p>{{this.hour[1].windspeed}} {{this.hour[1].direction}}</p>
+          <!-- 3 Hour Block 3 -->
+          <h4>{{this.hour[2].hour}}</h4>
+          <img class="icon" id="icon-2" :src="getImgUrl('blank.png')" width="90" height="90">
+          <p>{{this.hour[2].temp}}</p>
+          <p>{{this.hour[2].weather}}</p>
+          <p>{{this.hour[2].windspeed}} {{this.hour[2].direction}}</p>
+          <!-- 3 Hour Block 4 -->
+          <h4>{{this.hour[3].hour}}</h4>
+          <img class="icon" id="icon-3" :src="getImgUrl('blank.png')" width="90" height="90">
+          <p>{{this.hour[3].temp}}</p>
+          <p>{{this.hour[3].weather}}</p>
+          <p>{{this.hour[3].windspeed}} {{this.hour[3].direction}}</p>
         </div>
       </div>
-      <div class="col-sm-4 tall-col">
+      <div class="col-sm-5 tall-col">
           <div class="well">
             <h3>Local Conditions</h3>
             <h4>Weather:</h4>
@@ -41,6 +64,30 @@ var d2d = require('degrees-to-direction')
 export default {
   data () {
     return {
+      // For hourly forecast
+      hour: [
+        { temp: '',
+          weather: '',
+          windspeed: '',
+          hour: ''},
+        { temp: '',
+          weather: '',
+          windspeed: '',
+          hour: ''},
+        { temp: '',
+          weather: '',
+          windspeed: '',
+          hour: ''},
+        { temp: '',
+          weather: '',
+          windspeed: '',
+          hour: ''},
+        { temp: '',
+          weather: '',
+          windspeed: '',
+          hour: ''}
+      ],
+      // For current conditions
       description: '',
       localTemp: '',
       highTemp: '',
@@ -50,6 +97,7 @@ export default {
       direction: '',
       sunrise: '',
       sunset: '',
+      deg: '&deg;',
       zip: this.getCookie('zip')
     }
   },
@@ -57,6 +105,7 @@ export default {
     // Automatically fetch weather when returning to this page from another
     if (this.zip !== '') {
       this.getCurrentConditions()
+      this.get3Hour()
     }
   },
   methods: {
@@ -70,7 +119,9 @@ export default {
       this.speed = 'Loading...'
       this.sunrise = 'Loading...'
       this.sunset = 'Loading...'
-      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + this.zip + ',us' +
+      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=' +
+                this.zip +
+                ',us' +
                 '&units=imperial' + // Unit default is Kelvin
                 '&appid=0c2cf2d862aed4851bd89af90698bc92'
       fetch(url).then(function (response) {
@@ -84,9 +135,40 @@ export default {
         this.humidity = json.main.humidity + '%'
         this.speed = json.wind.speed + ' mph'
         this.direction = d2d(json.wind.deg)
-        this.sunrise = this.getTime(json.sys.sunrise) + ' am'
-        this.sunset = this.getTime(json.sys.sunset) + ' pm'
+        this.sunrise = this.getTime(json.sys.sunrise)
+        this.sunset = this.getTime(json.sys.sunset)
       }.bind(this)).catch(function (reason) {
+        console.log(reason)
+      })
+    },
+    get3Hour: function () {
+      for (let i = 0; i < 4; i++) {
+        this.hour[i].temp = 'Loading...'
+        this.hour[i].weather = 'Loading...'
+        this.hour[i].windspeed = 'Loading...'
+        this.hour[i].hour = 'Loading...'
+      }
+      let url = 'http://api.openweathermap.org/data/2.5/forecast?zip=' +
+              this.zip +
+              ',us' +
+              '&units=imperial' +
+              '&APPID=0c2cf2d862aed4851bd89af90698bc92'
+      fetch(url).then(function (response) {
+        return response.json()
+      }).then(function (json) {
+        // console.log(json)
+        if (json.list.length > 0) {
+          for (let i = 0; i < 4; i++) {
+            this.hour[i].temp = json.list[i].main.temp + String.fromCharCode(176) + ' F'
+            this.hour[i].weather = json.list[i].weather[0].description
+            this.hour[i].windspeed = json.list[i].wind.speed + ' mph'
+            this.hour[i].direction = d2d(json.list[i].wind.deg)
+            document.getElementById('icon-' + i).src = this.getImgUrl(json.list[i].weather[0].main + '.png')
+            this.hour[i].hour = this.getTime(json.list[i].dt)
+          }
+        }
+      }.bind(this))
+      .catch(function (reason) {
         console.log(reason)
       })
     },
@@ -109,14 +191,21 @@ export default {
       var date = new Date(timestamp * 1000)
       // Converts military hours into standard hours
       var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours()
+      // Determine am or pm
+      var ampm = date.getHours() < 12 ? ' am' : ' pm'
       // Values less than 10 will have a '0' inserted infront
       var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
-      var formattedTime = hours + ':' + minutes
+      var formattedTime = hours + ':' + minutes + ampm
       return formattedTime
+    },
+    getImgUrl: function (img) {
+      var images = require.context('../assets/', false, /\.png$/)
+      return images('./' + img)
     }
   }
 }
 </script>
+
 <style>
 
     .row-eq-height {
@@ -128,7 +217,8 @@ export default {
     }
 
     /* Give some headroom to containers. Should be moved to global css*/
-    .vertical-buffer-3 {margin-top: 3em;}
+    .vertical-buffer-3 {margin-top: 2.5em;}
+    .vertical-buffer-5 {margin-top: 2.5em;}
 
     /* extend col content to max height, works with row-eq-height */
     .tall-col {
@@ -182,5 +272,10 @@ export default {
 
     h4 {
       font-weight: Bold;
+    }
+
+    .icon {
+      float: left;
+      margin-left: 95px;
     }
   </style>

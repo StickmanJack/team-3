@@ -42,8 +42,8 @@
     </div>
   </div><!--end req wrapping div-->
 </template>
-<script>
 
+<script>
 export default {
   data () {
     return {
@@ -85,7 +85,9 @@ export default {
       this.localCity = 'Loading...'
       this.localTemp = 'Loading...'
       this.conditions = 'Loading...'
-      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=' + this.zip + ',us' +
+      let url = 'http://api.openweathermap.org/data/2.5/weather?zip=' +
+                this.zip +
+                ',us' +
                 '&units=imperial' + // Unit default is Kelvin
                 '&appid=0c2cf2d862aed4851bd89af90698bc92'
       fetch(url).then(function (response) {
@@ -159,6 +161,7 @@ export default {
   }
 }
 </script>
+
 <style>
     #q-author {
       text-align: right;
