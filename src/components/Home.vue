@@ -242,6 +242,11 @@ export default {
         background-color: white;
     }
 
+    input{
+        background-color: rgba(220, 220, 220, 0.5);
+        border-color: rgb(150, 150, 150);
+    }
+
     #under-header {
       background-image: url('../assets/demo-background-4a.jpg');
       background-position: center center;
