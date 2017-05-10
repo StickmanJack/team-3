@@ -44,7 +44,7 @@ export default {
 .vertical-buffer-3 {margin-top: 3em;}
 
   .well {
-   background-color: rgba(240, 230, 180, 0.4);
+   background-color: rgba(220, 200, 180, 0.8);
   }
 
 #app {
