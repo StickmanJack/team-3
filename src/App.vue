@@ -58,7 +58,7 @@ export default {
 
   #under-header {
     height: 100%;
-    background-image: url('./assets/demo-background.png');
+    background-image: url('./assets/demo-background-4a.jpg');
     background-position: center center;
     background-size: cover;
   }

@@ -243,7 +243,7 @@ export default {
     }
 
     #under-header {
-      background-image: url('../assets/demo-background.png');
+      background-image: url('../assets/demo-background-4a.jpg');
       background-position: center center;
       background-size: 100%;
       background-repeat: no-repeat;
