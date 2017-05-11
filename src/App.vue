@@ -44,7 +44,7 @@ export default {
 .vertical-buffer-3 {margin-top: 3em;}
 
   .well {
-   background-color: rgba(240, 230, 180, 0.4);
+   background-color: rgba(220, 200, 180, 0.8);
   }
 
 #app {
@@ -52,13 +52,13 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #0a0f13;
   margin-top: 60px;
 }
 
   #under-header {
     height: 100%;
-    background-image: url('./assets/demo-background.png');
+    background-image: url('./assets/demo-background-4a.jpg');
     background-position: center center;
     background-size: cover;
   }

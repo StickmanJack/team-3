@@ -2,10 +2,10 @@
   <div> <!--required wrapping div-->
     <div class="vertical-buffer-5"></div>
     <h1>Good Afternoon {{username}}!</h1>
-    <input v-model.lazy="username" placeholder="name">
+    <input  v-model.lazy="username" placeholder="name">
     <input v-model.lazy="gotd" placeholder="goal">
     <input v-model="zip" placeholder="zip code"><br/><br/>
-    <button v-on:click="checkCookie ()"> Fetch Weather </button>
+    <button v-on:click="checkCookie ();"> Fetch Weather </button>
     <button v-on:click="deleteCookie ()"> Reset </button>
     <div class="vertical-buffer-5"></div>
     <div class="row row-eq-height">
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -170,7 +171,8 @@ export default {
     }
 
     .section-content {
-      font-size: 2em;
+      font-size: 20pt;
+      text-align: justify;
     }
 
     .section-title {
@@ -242,8 +244,13 @@ export default {
         background-color: white;
     }
 
+    input{
+        background-color: rgba(220, 220, 220, 0.5);
+        border-color: rgb(150, 150, 150);
+    }
+
     #under-header {
-      background-image: url('../assets/demo-background.png');
+      background-image: url('../assets/demo-background-4a.jpg');
       background-position: center center;
       background-size: 100%;
       background-repeat: no-repeat;
