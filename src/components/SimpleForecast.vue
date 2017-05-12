@@ -7,9 +7,9 @@
       <div class="col-sm-6 col-center">
         <div class="well">
           <h2>{{this.day[0].weekday}} (Current Day)</h2>
-          <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[0].weather">
+          <img v-bind:src="this.getImgUrl(this.day[0].weather+'.png')" width="100" height="100" v-bind:alt="this.day[0].weather">
           <p>{{this.day[0].highTemp}}/{{this.day[0].lowTemp}} <span v-html="deg"></span>F</p>
-          <p>{{this.day[0].weather}}</p>
+          <p>{{this.day[0].description}}</p>
           <p>{{this.day[0].windspeed}} MPH</p>
         </div>
       </div>
@@ -22,7 +22,7 @@
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>{{this.day[1].weekday}}</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[1].weather">
+                <img v-bind:src="this.getImgUrl(this.day[1].weather+'.png')" width="100" height="100" v-bind:alt="this.day[1].weather">
                 <p>{{this.day[1].highTemp}}/{{this.day[1].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[1].weather}}</p>
                 <p>{{this.day[1].windspeed}} MPH</p>
@@ -31,7 +31,7 @@
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>{{this.day[2].weekday}}</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[2].weather">
+                <img v-bind:src="this.getImgUrl(this.day[2].weather+'.png')" width="100" height="100" v-bind:alt="this.day[2].weather">
                 <p>{{this.day[2].highTemp}}/{{this.day[2].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[2].weather}}</p>
                 <p>{{this.day[2].windspeed}} MPH</p>
@@ -40,7 +40,7 @@
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>{{this.day[3].weekday}}</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[3].weather">
+                <img v-bind:src="this.getImgUrl(this.day[3].weather+'.png')" width="100" height="100" v-bind:alt="this.day[3].weather">
                 <p>{{this.day[3].highTemp}}/{{this.day[3].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[3].weather}}</p>
                 <p>{{this.day[3].windspeed}} MPH</p>
@@ -49,7 +49,7 @@
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>{{this.day[4].weekday}}</h2>
-                <img src="../assets/demo-sunny.png" width="100" height="100" v-bind:alt="this.day[4].weather">
+                <img v-bind:src="this.getImgUrl(this.day[4].weather+'.png')" width="100" height="100" v-bind:alt="this.day[4].weather">
                 <p>{{this.day[4].highTemp}}/{{this.day[4].lowTemp}} <span v-html="deg"></span>F</p>
                 <p>{{this.day[4].weather}}</p>
                 <p>{{this.day[4].windspeed}} MPH</p>
@@ -72,26 +72,31 @@ export default {
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
+          description: '0',
           windspeed: '0',
           dayOfWeek: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
+          description: '0',
           windspeed: '0',
           dayOfWeek: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
+          description: '0',
           windspeed: '0',
           weekday: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
+          description: '0',
           windspeed: '0',
           weekday: '0'},
         { highTemp: '0',
           lowTemp: '0',
           weather: '0',
+          description: '0',
           windspeed: '0',
           weekday: '0'}
       ],
@@ -123,7 +128,8 @@ export default {
             var day = data.list[ i * 8 ]
             this.day[i].highTemp = day.main['temp_max']
             this.day[i].lowTemp = day.main['temp_min']
-            this.day[i].weather = day.weather[0]['description']
+            this.day[i].weather = day.weather[0]['main']
+            this.day[i].description = day.weather[0]['description']
             this.day[i].windspeed = day.wind['speed']
           }
         }
@@ -163,6 +169,10 @@ export default {
         }
       }
       return ''
+    },
+    getImgUrl: function (img) {
+      var images = require.context('../assets/', false, /\.png$/)
+      return images('./' + img)
     }
   }
 }

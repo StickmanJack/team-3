@@ -13,7 +13,7 @@
       <div class="col-sm-2 tall-col">
         <div class="well">
           <h2>Current Weather</h2>
-          <img id="weather-icon" :src="getImgUrl('blank.png')" width="100" height="100">
+          <img v-bind:src="this.getImgUrl(this.day[0].weather)" width="100" height="100" v-bind:alt="this.day[0].weather">
           <h3>{{localCity}}</h3>
           <h3>{{localTemp}}</h3>
           <h4>{{conditions}}</h4>
