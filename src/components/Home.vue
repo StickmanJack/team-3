@@ -13,7 +13,7 @@
       <div class="col-sm-2 tall-col">
         <div class="well">
           <h2>Current Weather</h2>
-          <img v-bind:src="this.getImgUrl(this.day[0].weather)" width="100" height="100" v-bind:alt="this.day[0].weather">
+          <img id="weather-icon" :src="getImgUrl('blank.png')" width="100" height="100">
           <h3>{{localCity}}</h3>
           <h3>{{localTemp}}</h3>
           <h4>{{conditions}}</h4>
@@ -44,7 +44,6 @@
 </template>
 
 <script>
-
 export default {
   data () {
     return {
@@ -80,7 +79,6 @@ export default {
         console.log(reason)
       })
     },
-
     // Access weather API and get current weather info
     getCurrentConditions: function () {
       this.localCity = 'Loading...'
@@ -104,7 +102,6 @@ export default {
         console.log(reason)
       })
     },
-
     setCookie: function (cname, cvalue, cname2, cvalue2, cname3, cvalue3, exdays) {
       var d = new Date()
       d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
@@ -117,7 +114,6 @@ export default {
       this.zip = cvalue3
       this.getCurrentConditions()
     },
-
     getCookie: function (cname) {
       var name = cname + '='
       var decodedCookie = decodeURIComponent(document.cookie)
@@ -133,7 +129,6 @@ export default {
       }
       return ''
     },
-
     checkCookie: function () {
       var user = this.username
       var goal = this.gotd
@@ -154,7 +149,6 @@ export default {
       this.conditions = ''
       document.getElementById('weather-icon').src = this.getImgUrl('blank.png')
     },
-
     getImgUrl: function (img) {
       var images = require.context('../assets/', false, /\.png$/)
       return images('./' + img)
@@ -169,18 +163,15 @@ export default {
       margin-right: 10em;
       font-size: 1.5em;
     }
-
     .section-content {
       font-size: 20pt;
       text-align: justify;
     }
-
     .section-title {
       margin-top: 0em;
       margin-left: 4em;
       text-align: left;
     }
-
     .row-eq-height {
       flex-direction:row;
       display: -webkit-box;
@@ -188,49 +179,40 @@ export default {
       display: -ms-flexbox;
       display:         flex;
     }
-
     /* Give some headroom to containers. Should be moved to global css*/
     .vertical-buffer-3 {margin-top: 2.5em;}
     .vertical-buffer-5 {margin-top: 2.5em;}
-
     /* extend col content to max height, works with row-eq-height */
     .tall-col {
       display: flex;
       flex-direction: column;
     }
-
     .tall-col div {
       flex: 1;
     }
-
     /*'of the day' headings*/
     .otd-head{
       Font-Size: 18pt;
     }
-
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
-
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
       height: 100%;
     }
-
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
       color: white;
       padding: 15px;
     }
-
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
@@ -239,16 +221,13 @@ export default {
       }
       .row.content {height:auto;}
     }
-
     .container-fluid{
         background-color: white;
     }
-
     input{
         background-color: rgba(220, 220, 220, 0.5);
         border-color: rgb(150, 150, 150);
     }
-
     #under-header {
       background-image: url('../assets/demo-background-4a.jpg');
       background-position: center center;
