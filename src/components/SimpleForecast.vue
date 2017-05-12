@@ -222,10 +222,6 @@ export default {
       .row.content {height:auto;}
     }
 
-    .container-fluid{
-        background-color: white;
-    }
-
     .col-center{
       float: none;
       margin: 0 auto;

@@ -262,10 +262,6 @@ export default {
       .row.content {height:auto;}
     }
 
-    .container-fluid{
-        background-color: white;
-    }
-
     h3 {
       font-weight: Bold;
     }

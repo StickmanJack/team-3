@@ -244,19 +244,9 @@ export default {
       .row.content {height:auto;}
     }
 
-    .container-fluid{
-        background-color: white;
-    }
-
     input{
-        background-color: rgba(220, 220, 220, 0.5);
+        background-color: rgba(108, 130, 160, 0.5);
         border-color: rgb(150, 150, 150);
     }
 
-    #under-header {
-      background-image: url('../assets/demo-background-4a.jpg');
-      background-position: center center;
-      background-size: 100%;
-      background-repeat: no-repeat;
-    }
 </style>

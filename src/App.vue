@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="text-center">
+  <div id="appl" class="text-center">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -40,26 +40,33 @@ export default {
 </script>
 
 <style>
+html, body {
+  height: 100%;
+}
+
   /* Give some headroom to containers. Should be moved to global css*/
 .vertical-buffer-3 {margin-top: 3em;}
 
   .well {
-   background-color: rgba(220, 200, 180, 0.8);
+   background-color: rgba(108, 130, 160, 0.7);
   }
 
-#app {
+#appl {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #0a0f13;
   margin-top: 60px;
+
+  height: 100%;
 }
 
-  #under-header {
-    height: 100%;
-    background-image: url('./assets/demo-background-4a.jpg');
-    background-position: center center;
+#under-header {
+    background-image: url('./assets/changing-weather.jpg');
+    background-position: fixed;
     background-size: cover;
-  }
+    height: 100%;
+}
+
 </style>
