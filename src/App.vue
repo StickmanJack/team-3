@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <img class="navbar-brand" src = "./assets/demo-logo.png"></img>
+          <img class="navbar-brand" src = "./assets/logo.png"></img>
         </div>
 
         <!-- collapsing navbar taken from bootstrap example 1-->
