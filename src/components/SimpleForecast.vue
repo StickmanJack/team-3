@@ -112,7 +112,7 @@ export default {
   methods: {
     getWeather: function () {
       var requestString = 'http://api.openweathermap.org/data/2.5/forecast?zip=' +
-                        this.zip+',us' +
+                        this.zip + ',us' +
                         '&format=json' +
                         '&units=imperial' +
                         '&APPID=0c2cf2d862aed4851bd89af90698bc92'
