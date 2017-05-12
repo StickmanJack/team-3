@@ -2,15 +2,19 @@
   <div> <!--required wrapping div-->
     <div class="vertical-buffer-5"></div>
     <h1>Good Afternoon {{username}}!</h1>
-    <input  v-model.lazy="username" placeholder="name">
-    <input v-model.lazy="gotd" placeholder="goal">
-    <input v-model="zip" placeholder="zip code"><br/><br/>
-    <button v-on:click="checkCookie ();"> Fetch Weather </button>
-    <button v-on:click="deleteCookie ()"> Reset </button>
+    <div class="row">
+      <div class="col-12">
+        <input  v-model.lazy="username" placeholder="name">
+        <input v-model.lazy="gotd" placeholder="goal">
+        <input v-model="zip" placeholder="zip code"><br/><br/>
+        <button v-on:click="checkCookie ();"> Fetch Weather </button>
+        <button v-on:click="deleteCookie ()"> Reset </button>
+      </div>
+    </div>
     <div class="vertical-buffer-5"></div>
-    <div class="row row-eq-height">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-2 tall-col">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-12 col-sm-4 col-md-2 tall-col">
         <div class="well">
           <h2>Current Weather</h2>
           <img id="weather-icon" :src="getImgUrl('blank.png')" width="100" height="100">
@@ -19,9 +23,9 @@
           <h4>{{conditions}}</h4>
         </div>
       </div>
-      <div class="col-sm-8 tall-col">
+      <div class="col-12 col-sm-8 tall-col">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="well">
               <h2 class="section-title">Quote of the Day:</h2>
               <p class="section-content">{{quote}}</p>
@@ -30,14 +34,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-md-12">
             <div class="well">
               <h2 class="section-title">Goal of the Day:</h2>
               <p class="section-content">{{gotd}}</p>
             </div>
           </div>
         </div>
-        <div class="col-sm-1"></div>
+        <div class="col-md-1"></div>
       </div>
     </div>
   </div><!--end req wrapping div-->
