@@ -48,7 +48,7 @@ html, body {
 .vertical-buffer-3 {margin-top: 3em;}
 
   .well {
-   background-color: rgba(108, 130, 160, 0.7);
+   background-color: rgba(128, 150, 180, 0.7);
   }
 
 #appl {

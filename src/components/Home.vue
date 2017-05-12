@@ -241,7 +241,7 @@ export default {
     }
 
     input{
-        background-color: rgba(108, 130, 160, 0.5);
+        background-color: rgba(158, 180, 210, 0.7);
         border-color: rgb(150, 150, 150);
     }
 
