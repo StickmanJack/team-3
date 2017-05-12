@@ -2,15 +2,11 @@
   <div> <!--required wrapping div-->
     <div class="vertical-buffer-5"></div>
     <h1>Good Afternoon {{username}}!</h1>
-    <div class="row">
-      <div class="col-12">
-        <input  v-model.lazy="username" placeholder="name">
-        <input v-model.lazy="gotd" placeholder="goal">
-        <input v-model="zip" placeholder="zip code"><br/><br/>
-        <button v-on:click="checkCookie ();"> Fetch Weather </button>
-        <button v-on:click="deleteCookie ()"> Reset </button>
-      </div>
-    </div>
+    <input  v-model.lazy="username" placeholder="name">
+    <input v-model.lazy="gotd" placeholder="goal">
+    <input v-model="zip" placeholder="zip code"><br/><br/>
+    <button v-on:click="checkCookie ();"> Fetch Weather </button>
+    <button v-on:click="deleteCookie ()"> Reset </button>
     <div class="vertical-buffer-5"></div>
     <div class="row">
       <div class="col-md-1"></div>
