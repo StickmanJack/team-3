@@ -228,10 +228,4 @@ export default {
         background-color: rgba(158, 180, 210, 0.7);
         border-color: rgb(150, 150, 150);
     }
-    #under-header {
-      background-image: url('../assets/demo-background-4a.jpg');
-      background-position: center center;
-      background-size: 100%;
-      background-repeat: no-repeat;
-    }
 </style>
