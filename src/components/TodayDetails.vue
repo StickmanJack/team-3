@@ -1,9 +1,9 @@
 <template>
   <div><!--required wrapping div-->
     <h1>Today's Detailed Forecast</h1>
-    <div class="row row-eq-height">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-5 tall-col">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-12 col-sm-6 col-md-5 tall-col">
         <div class="well" id="test">
           <h3>Hourly Forecast</h3>
           <!-- 3 Hour Block 1 -->
@@ -32,7 +32,7 @@
           <p>{{this.hour[3].windspeed}} {{this.hour[3].direction}}</p>
         </div>
       </div>
-      <div class="col-sm-5 tall-col">
+      <div class="col-12 col-sm-6 col-md-5 tall-col">
           <div class="well">
             <h3>Local Conditions</h3>
             <h4>Weather:</h4>
@@ -53,7 +53,7 @@
             <p>{{sunset}}</p>
           </div>
         </div>
-      <div class="col-sm-1"></div>
+      <div class="col-md-1"></div>
     </div>
   </div><!--end req wrapping div-->
 </template>
@@ -260,10 +260,6 @@ export default {
         padding: 15px;
       }
       .row.content {height:auto;}
-    }
-
-    .container-fluid{
-        background-color: white;
     }
 
     h3 {

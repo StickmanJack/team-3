@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
-        <div class="row row-eq-height">
+        <div class="row">
           <div class="col-sm-3 tall-col">
               <div class="well">
                 <h2>{{this.day[1].weekday}}</h2>
@@ -230,10 +230,6 @@ export default {
         padding: 15px;
       }
       .row.content {height:auto;}
-    }
-
-    .container-fluid{
-        background-color: white;
     }
 
     .col-center{
