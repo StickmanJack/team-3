@@ -1,10 +1,17 @@
 # G3 Daily Briefing
 
-> Provides users with a daily briefing of weather and other info. The home page allows the user to enter a name, goal for the day, and zipcode. The zipcode is passed to the weather API that returns weather data for that zipcode. The home page Displays the current condtions, a quote of the day fetched from another API, and the user's input goal of the day. 
+Provides users with a daily briefing of weather and other info. The home page allows the user to enter a name, goal for the day, and zipcode. The zipcode is passed to the weather API that returns weather data for that zipcode. The Home page displays the current condtions, a quote of the day fetched from another API, and the user's input goal of the day. The Weather Details page displays more detailed current conditions plus an hourly forecast. The 5-Day page shows the expected weather for the next five days.
 
-> The Weather Details page displays more detailed current conditions plus an hourly forecast. The 5-Day page shows the expected weather for the next five days
+Advanced Internet Programming class project with a 5 person development team using Vue.js.
 
-> Advanced Internet Programming class project with a 5 person development team.
+## Home Screen
+![Home Screen](/img/Home.png)
+
+## Today's Weather
+![Today's Weather](/img/Weather-Details.png)
+
+## 5 Day Forecast
+![5 Day Forecast](/img/5-Day.png)
 
 ## Build Setup
 
