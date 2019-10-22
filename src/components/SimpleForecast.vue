@@ -67,7 +67,7 @@ export default {
   name: 'fiveday',
   data () {
     return {
-      localCity: 'Springfield',
+      localCity: '',
       day: [
         { highTemp: '0',
           lowTemp: '0',
@@ -123,6 +123,7 @@ export default {
       .then(function (data) {
         console.log(data)
         console.log(this)
+        this.localCity = data.city.name
         if (data.list.length > 0) {
           for (var i = 0; i < 5; i++) {
             var day = data.list[ i * 8 ]
